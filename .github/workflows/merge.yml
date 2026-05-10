@@ -1,8 +1,8 @@
 name: Merge
 
 on:
-  schedule: # Run every 3 hours
-  - cron: "0 0,3,6,9,12,15,18,21 * * *"
+  schedule: 
+  - cron: "0 0,2,4,6,8,10,12,14,16,18,20,22 * * *"
   workflow_dispatch:
 
 jobs:
@@ -10,13 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Merge main into production
+      - name: Pull latest from spreadsheet
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git fetch --unshallow
           git pull origin main
-          git checkout production
-          git pull origin production
-          git merge main --no-ff --no-edit
-          git push origin production
+          pip install openpyxl
+          python3 fetcher.py
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Update: $(date +'%Y-%m-%d %H:%M:%S')"
+          git push
