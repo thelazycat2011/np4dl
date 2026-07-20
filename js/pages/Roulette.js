@@ -231,7 +231,9 @@ export default {
             this.givenUp = true;
 
             // Save progress
-            localStorage.removeItem('roulette');
+            // localStorage.removeItem('roulette');
+
+            // Note to future : DO NOT REMOVE THE DATA IF THERES STILL ACTION ACCESSING IT AFTER THE FACT
         },
         onImport() {
             if (
