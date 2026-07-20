@@ -72,10 +72,10 @@ export default {
                             <h1>Results</h1>
                             <p>Number of levels: {{ progression.length }}</p>
                             <p>Highest percent: {{ currentPercentage }}%</p>
-                            <Btn v-if="currentPercentage < 99 && !hasCompleted" @click.native.prevent="showRemaining = true">Show remaining levels</Btn>
+                            <Btn v-if="currentPercentage < 99 && !hasCompleted" @click.native.prevent="onShowRemaining">Show remaining levels</Btn>
                         </div>
                         <!-- Remaining Levels -->
-                        <template v-if="showRemaining">
+                        <template v-if="givenUp && showRemaining">
                             <div class="level" v-for="(level, i) in levels.slice(progression.length + 1, levels.length - currentPercentage + progression.length)">
                                 <a :href="level.video" target="_blank" class="video">
                                     <img :src="getThumbnailFromId(getYoutubeIdFromUrl(level.video))" alt="">
@@ -292,5 +292,8 @@ export default {
                 this.toasts.shift();
             }, 3000);
         },
+        onShowRemaining() {
+            this.showRemaining = true;
+        }
     },
 };
