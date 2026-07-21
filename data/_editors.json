@@ -9,10 +9,6 @@
     },
     {
         "role": "admin",
-        "name": "Tabbi"
-    },
-    {
-        "role": "helper",
         "name": "superheptagon"
     },
     {
@@ -26,5 +22,21 @@
     {
         "role": "dev",
         "name": "Thelazycat"
+    },
+    {
+        "role": "helper",
+        "name": "OtherChris"
+    },
+    {
+        "role": "helper",
+        "name": "Technobuild"
+    },
+    {
+        "role": "helper",
+        "name": "TPSkeleton"
+    },
+    {
+        "role": "helper",
+        "name": "Tabbi"
     }
 ]
